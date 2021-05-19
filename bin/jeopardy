@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# This is a compact version of junonia_bootstrap for easy copyhing into user
+# scripts. For a fully commented, documented version of this script see
+# https://github.com/fprimex/junonia/blob/master/junonia.sh
+junonia_bootstrap () {
+  JUNONIA_TARGET="$0"
+  while [ -h "$JUNONIA_TARGET" ]; do
+    JUNONIA_PATH=$(readlink "$JUNONIA_TARGET")
+    if [ "$(echo "$JUNONIA_PATH" | cut -c -1)" = "/" ]; then
+    JUNONIA_TARGET="$JUNONIA_PATH"
+    else
+    JUNONIA_TARGET="$(dirname $JUNONIA_TARGET)"
+    JUNONIA_TARGET="$JUNONIA_TARGET/$JUNONIA_PATH"
+    fi
+  done
+  JUNONIA_PATH="$(cd "$(dirname "$JUNONIA_TARGET")" && pwd -P)"
+  JUNONIA_TARGET="$JUNONIA_PATH/$(basename $JUNONIA_TARGET)"
+  if [ "$(basename "$JUNONIA_PATH")" = bin ]; then
+    JUNONIA_PATH="$(dirname "$JUNONIA_PATH")"
+  fi
+}
+
+# Top level invocation of the command.
+jeopardy () {
+  $0 help
+  return 1
+}
+
+jeopardy_version () {
+  echo '0.1dev'
+}
+
+jeopardy_jw_callback () {
+  junonia_jtree "$1"
+}
+
+junonia_bootstrap
+
+. ./junonia
+
+junonia_run "$@"
