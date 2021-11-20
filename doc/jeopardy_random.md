@@ -19,3 +19,9 @@ Amount of clues to return, limited to 100 at a time
 ### Documentation
 
 http://jservice.io/
+
+### Output
+
+| Value    | Question                                           | Answer    |
+| -------- | -------------------------------------------------- | --------- |
+| `.value` | `.question`                                        | `.answer` |

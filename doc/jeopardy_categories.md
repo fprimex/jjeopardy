@@ -23,3 +23,9 @@ Offsets the returned clues for e.g. pagination
 ### Documentation
 
 http://jservice.io/
+
+### Output
+
+| ID    | Clues Count    | Title    |
+| ----- | -------------- | -------- |
+| `.id` | `.clues_count` | `.title` |

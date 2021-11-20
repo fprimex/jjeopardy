@@ -35,3 +35,9 @@ Offsets the returned clues for e.g. pagination
 ### Documentation
 
 http://jservice.io/
+
+### Output
+
+| Value    | Question                                           | Answer    |
+| -------- | -------------------------------------------------- | --------- |
+| `.value` | `.question`                                        | `.answer` |
